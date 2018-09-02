@@ -109,7 +109,7 @@ Here is an image of the lane pixels found colored in red and green, and the fitt
 
 ![alt text][image5]
 
-#### 5. Describe how (and identify where in your code) you calculated the radius of curvature of the lane and the position of the vehicle with respect to center. TODO
+#### 5. Describe how (and identify where in your code) you calculated the radius of curvature of the lane and the position of the vehicle with respect to center. 
 
 I found the radius of curvature by first fitting a second line using the lane pixels scaled to meters.  These new pixels were calculated by calculating x values using the polynomial and over the y pixel axis.  After I got the second polynomial I used the radius of curvature formula:
 
@@ -121,7 +121,7 @@ These operations are written on the `Line.get_curvature_offset` method
 
 In order to reduce noise I used a rolling window array in order to take the average of the current frame and the last 4. This operations is written on the `Line.find_lines` method where the `Line.average_value` is called on the curvature and center_diff values.
 
-#### 6. Provide an example image of your result plotted back down onto the road such that the lane area is identified clearly. TODO
+#### 6. Provide an example image of your result plotted back down onto the road such that the lane area is identified clearly. 
 
 The results were plotted back to the image on the `Line.draw_lines` method. This method takes in the original image the warped image and the left and right line pixel coordinates. `cv2.fill_polly` is called to draw the line pixel coordinates. After the lines are drawn `cv2.warpPerspective` is then called to warp the image down to the original perspective. 
 Finally, the final original image and the warped line images get merge together by using the `cv2.addWeighted` function.
